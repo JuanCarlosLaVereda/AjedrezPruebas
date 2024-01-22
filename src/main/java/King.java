@@ -5,7 +5,37 @@ public class King extends Piece{
 
     @Override
     public Coordinate[] getNextMovements() {
-        return new Coordinate[0];
+        Coordinate[] coordinates = new Coordinate[0];
+        Coordinate initialPosition = getCell().getCoordinate();
+        Coordinate coordinate;
+
+        //up
+        coordinate = initialPosition.up();
+        if (canAddToNextMovements(coordinate)){
+            Tool.add(coordinate, coordinates);
+        }
+        coordinate = initialPosition.up().right();
+        if (canAddToNextMovements(coordinate)){
+            Tool.add(coordinate, coordinates);
+        }
+        coordinate = initialPosition.up().left();
+        if (canAddToNextMovements(coordinate)){
+            Tool.add(coordinate, coordinates);
+        }
+        coordinate = initialPosition.down();
+        if (canAddToNextMovements(coordinate)){
+            Tool.add(coordinate, coordinates);
+        }
+        coordinate = initialPosition.down().right();
+        if (canAddToNextMovements(coordinate)){
+            Tool.add(coordinate, coordinates);
+        }
+        coordinate = initialPosition.down().left();
+        if (canAddToNextMovements(coordinate)){
+            Tool.add(coordinate, coordinates);
+        }
+
+        return coordinates;
     }
 
     public enum Type{

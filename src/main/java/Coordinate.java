@@ -27,6 +27,10 @@ public class Coordinate {
     public Coordinate right(){
         return new Coordinate((char)(letter+1),number);
     }
+    public Coordinate diagonalUpLeft(){return new Coordinate((char)(letter-1), number-1);}
+    public Coordinate diagonalUpRight(){return new Coordinate((char)(letter+1), number-1);}
+    public Coordinate diagonalDownLeft(){return new Coordinate((char)(letter-1), number+1);}
+    public Coordinate diagonalDownRight(){return new Coordinate((char)(letter+1), number+1);}
 
     @Override
     public String toString(){

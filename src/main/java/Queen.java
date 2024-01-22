@@ -5,8 +5,17 @@ public class Queen extends Piece{
 
     @Override
     public Coordinate[] getNextMovements() {
-        return new Coordinate[0];
+        Coordinate[] nextMovements = new Coordinate[0];
+
+        nextMovements = Bishop.getNextMovementsAsBishop(this);
+        Coordinate[] nextMovementsRook = new Coordinate[0];
+        nextMovementsRook = Rook.getNextMovementsAsRook(this);
+        for (Coordinate coordinate:nextMovementsRook){
+            nextMovements = Tool.add(coordinate,nextMovements);
+        }
+        return nextMovements;
     }
+
 
     public enum Type{
         BLACK(Piece.Type.BLACK_QUEEN),
