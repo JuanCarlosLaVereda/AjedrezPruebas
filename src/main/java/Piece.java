@@ -45,6 +45,37 @@ public abstract class Piece {
         return false;
     }
 
+    public boolean canMoveTo(Coordinate coordinate){
+        Coordinate[] coordinates = getNextMovements();
+        for (Coordinate coordinate1 : coordinates) {
+            if (coordinate1.equals(coordinate)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void remove(){
+        if (cell != null){
+            cell.setPiece(null);
+        }
+        cell=null;
+    }
+
+    public boolean moveTo(Coordinate coordinate){
+        if (!(canMoveTo(coordinate))){
+            return false;
+        }
+        Board board = cell.getBoard();
+        if (!(board.getCellAt(coordinate).isEmpty())){
+            board.getCellAt(coordinate).getPiece().remove();
+        }
+        remove();
+        setCell(board.getCellAt(coordinate));
+        placePiece();
+        return true;
+    }
+
     @Override
     public String toString() {
         if(cell==null)

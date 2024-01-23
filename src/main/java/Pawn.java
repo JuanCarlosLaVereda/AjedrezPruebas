@@ -74,6 +74,23 @@ public class Pawn extends Piece{
 
     }
 
+    @Override
+    public boolean moveTo(Coordinate coordinate){
+        if (!super.moveTo(coordinate)){
+            return false;
+        }
+        if (getCell().getCoordinate().getNumber()==8 || getCell().getCoordinate().getNumber()==1){
+            Cell auxCell = this.getCell();
+            this.remove();
+            if (getColor()==Color.BLACK){
+                new Queen(auxCell.getBoard(),coordinate, Queen.Type.BLACK);
+            } else {
+                new Queen(auxCell.getBoard(),coordinate, Queen.Type.WHITE);
+            }
+        }
+        return true;
+    }
+
     public enum Type {
         BLACK(Piece.Type.BLACK_PAWN),
         WHITE(Piece.Type.WHITE_PAWN);

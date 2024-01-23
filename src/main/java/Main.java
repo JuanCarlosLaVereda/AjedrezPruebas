@@ -8,7 +8,7 @@ public class Main {
         Bishop b1 = new Bishop(tablero, new Coordinate('F',2),Bishop.Type.BLACK);
         Bishop b2 = new Bishop(tablero, new Coordinate('E',8),Bishop.Type.WHITE);
         Queen q1 = new Queen(tablero, new Coordinate('D',5), Queen.Type.WHITE);
-        Pawn p1 = new Pawn(tablero, new Coordinate('B', 7), Pawn.Type.WHITE);
+        Pawn p1 = new Pawn(tablero, new Coordinate('A', 2), Pawn.Type.WHITE);
         Pawn p2 = new Pawn(tablero, new Coordinate('C', 6), Pawn.Type.BLACK);
         Pawn p3 = new Pawn(tablero, new Coordinate('C', 2), Pawn.Type.BLACK);
         Pawn p4 = new Pawn(tablero, new Coordinate('B', 3), Pawn.Type.BLACK);
@@ -17,8 +17,12 @@ public class Main {
 
 
         tablero.highligh(p1.getNextMovements());
-        tablero.highligh(p3.getNextMovements());
 
+        System.out.println(tablero);
+        System.out.println(p1.moveTo(new Coordinate('A', 1)));
+        tablero.resetColor();
+        System.out.println(tablero);
+        tablero.highligh(tablero.getCellAt(new Coordinate('A', 1)).getPiece().getNextMovements());
         System.out.println(tablero);
 
     }
